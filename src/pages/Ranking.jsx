@@ -26,13 +26,6 @@ class Ranking extends Component {
     return (
       <section>
         <h1 data-testid="ranking-title">Ranking</h1>
-        <button
-          onClick={ this.handleClick }
-          type="button"
-          data-testid="btn-go-home"
-        >
-          Home
-        </button>
         {
           rankingSort.map(({ name, score, picture }, index) => (
             <div key={ index }>
@@ -42,6 +35,13 @@ class Ranking extends Component {
             </div>
           ))
         }
+        <button
+          onClick={ this.handleClick }
+          type="button"
+          data-testid="btn-go-home"
+        >
+          JOGAR NOVAMENTE
+        </button>
       </section>
     );
   }

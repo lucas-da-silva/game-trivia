@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import apiGravatar from '../services/apiGravatar';
+import ConfigurationButton from './ConfigurationButton';
 
 class Header extends Component {
   state = {
@@ -22,6 +23,7 @@ class Header extends Component {
         <img data-testid="header-profile-picture" src={ img } alt="Avatar" />
         <p data-testid="header-player-name">{ name }</p>
         <span data-testid="header-score">{ score }</span>
+        <ConfigurationButton />
       </div>
     );
   }

@@ -2,14 +2,13 @@ import { number } from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
-/* import store from '../redux/store'; */
 
 class Feedback extends Component {
   showMessageFeedback = () => {
     const TRES = 3;
     const { assertions } = this.props;
-    if (assertions >= TRES) return 'Well Done!';
-    return 'Could be better...';
+    if (assertions >= TRES) return 'MANDOU BEM!';
+    return 'PODIA SER MELHOR...';
   };
 
   buttonPlayAgain = () => {
@@ -28,23 +27,36 @@ class Feedback extends Component {
       <div>
         <Header />
         <main>
-          <p data-testid="feedback-text">{this.showMessageFeedback()}</p>
-          <p data-testid="feedback-total-score">{ score }</p>
-          <p data-testid="feedback-total-question">{ assertions }</p>
+          <h3 data-testid="feedback-text">{this.showMessageFeedback()}</h3>
+          <p
+            data-testid="feedback-total-question"
+          >
+            {
+              score === 0
+                ? 'Você não acertou nenhum questão!' : `Você acertou ${score} questões!`
+            }
+          </p>
+          <p
+            data-testid="feedback-total-score"
+          >
+            {
+              `Um total de ${assertions} ${assertions === 1 ? ' ponto' : ' pontos'}`
+            }
+          </p>
         </main>
         <button
           type="button"
           data-testid="btn-play-again"
           onClick={ this.buttonPlayAgain }
         >
-          Play Again
+          JOGAR NOVAMENTE
         </button>
         <button
           type="button"
           data-testid="btn-ranking"
           onClick={ this.buttonPlayRanking }
         >
-          Ranking
+          VER RANKING
         </button>
       </div>
     );

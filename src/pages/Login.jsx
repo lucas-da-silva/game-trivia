@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import ConfigurationButton from '../components/ConfigurationButton';
 import { resetScore, userAction } from '../redux/actions';
 import apiToken from '../services/apiToken';
 
@@ -68,7 +67,6 @@ class Login extends Component {
             Jogar
           </button>
         </form>
-        <ConfigurationButton />
       </section>
     );
   }

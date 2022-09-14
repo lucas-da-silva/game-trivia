@@ -26,7 +26,8 @@ class Game extends Component {
   }
 
   getQuestions = async () => {
-    const questions = await apiQuestions();
+    const { category, difficult, type } = this.props;
+    const questions = await apiQuestions(category, difficult, type);
     if (questions === undefined || !questions.length) {
       localStorage.removeItem('token');
       const { history } = this.props;
@@ -168,7 +169,7 @@ class Game extends Component {
                   data-testid="btn-next"
                   onClick={ this.nextQuestion }
                 >
-                  Next
+                  Próxima
                 </button>
               )}
             </div>
@@ -187,11 +188,16 @@ Game.propTypes = {
   name: PropTypes.string.isRequired,
   gravatarEmail: PropTypes.string.isRequired,
   score: PropTypes.number.isRequired,
-
+  category: PropTypes.string.isRequired,
+  difficult: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
 };
 
-const mapStateToProps = ({ player }) => ({
+const mapStateToProps = ({ player, game }) => ({
   ...player,
+  difficult: game.difficult,
+  category: game.category,
+  type: game.type,
 });
 
 const mapDispatchToProps = (dispatch) => ({

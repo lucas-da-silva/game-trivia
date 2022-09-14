@@ -11,7 +11,7 @@ class Routes extends Component {
     return (
       <Switch>
         <Route exact path="/game" render={ (props) => <Game { ...props } /> } />
-        <Route exact path="/settings" component={ Settings } />
+        <Route exact path="/settings" render={ (props) => <Settings { ...props } /> } />
         <Route exact path="/ranking" component={ Ranking } />
         <Route exact path="/" render={ (props) => <Login { ...props } /> } />
         <Route exact path="/feedback" component={ Feedback } />
