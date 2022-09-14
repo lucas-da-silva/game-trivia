@@ -13,14 +13,19 @@ class Header extends Component {
       is-primary is-max-desktop is-flex
       is-justify-content-space-around is-align-items-center"
       >
-        <figure className="image is-122x122">
-          <img
-            className="is-rounded"
-            data-testid="header-profile-picture"
-            src={ img }
-            alt="Avatar"
-          />
-        </figure>
+        <section className="is-flex">
+          <figure className="image is-122x122">
+            <img
+              className="is-rounded"
+              data-testid="header-profile-picture"
+              src={ img }
+              alt="Avatar"
+            />
+          </figure>
+          <figure className="image is-125x125">
+            <img src="https://www.svgrepo.com/show/414246/ask.svg" alt="logo" />
+          </figure>
+        </section>
         <section
           className="is-flex is-justify-content-space-between is-align-items-center"
         >
