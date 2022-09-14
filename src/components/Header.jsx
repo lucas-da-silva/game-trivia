@@ -8,12 +8,31 @@ class Header extends Component {
   render() {
     const { name, score, img } = this.props;
     return (
-      <div>
-        <img data-testid="header-profile-picture" src={ img } alt="Avatar" />
-        <p data-testid="header-player-name">{ name }</p>
-        <span data-testid="header-score">{ score }</span>
-        <ConfigurationButton />
-      </div>
+      <header
+        className="control has-background-grey-lighter has-text-black box p-2
+      is-primary is-max-desktop is-flex
+      is-justify-content-space-around is-align-items-center"
+      >
+        <figure className="image is-122x122">
+          <img
+            className="is-rounded"
+            data-testid="header-profile-picture"
+            src={ img }
+            alt="Avatar"
+          />
+        </figure>
+        <section
+          className="is-flex is-justify-content-space-between is-align-items-center"
+        >
+          <p className="mx-2" data-testid="header-player-name">
+            {`Player: ${name}`}
+          </p>
+          <span className="mx-2" data-testid="header-score">
+            {`Pontos: ${score}`}
+          </span>
+          <ConfigurationButton />
+        </section>
+      </header>
     );
   }
 }

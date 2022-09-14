@@ -70,7 +70,11 @@ class Game extends Component {
     this.setState({ timeIsExpired: true, givenAnswer: true });
   };
 
-  changeColor = (isCorrect) => (isCorrect ? 'correctAnswer' : 'incorrectAnswer');
+  changeColor = (isCorrect) => (
+    isCorrect
+      ? 'correctAnswer is-success is-outlined'
+      : 'incorrectAnswer is-danger is-outlined'
+  );
 
   updateClock = (currentCount) => {
     this.setState({ currentCount });
@@ -92,7 +96,10 @@ class Game extends Component {
         };
         const rankings = JSON.parse(localStorage.getItem('ranking'));
         if (rankings) {
-          localStorage.setItem('ranking', JSON.stringify([...rankings, userScore]));
+          localStorage.setItem(
+            'ranking',
+            JSON.stringify([...rankings, userScore]),
+          );
         } else {
           localStorage.setItem('ranking', JSON.stringify([userScore]));
         }
@@ -100,8 +107,10 @@ class Game extends Component {
         return history.push('/feedback');
       }
       const currentIndex = indexQuestion + 1;
-      const answers = [questions[currentIndex].correct_answer,
-        ...questions[currentIndex].incorrect_answers];
+      const answers = [
+        questions[currentIndex].correct_answer,
+        ...questions[currentIndex].incorrect_answers,
+      ];
       return {
         givenAnswer: false,
         resetTime: true,
@@ -137,19 +146,37 @@ class Game extends Component {
           handleExpired={ this.handleExpired }
         />
         {question && (
-          <div>
-            <p data-testid="question-category">{question.category}</p>
-            <p data-testid="question-text">{this.decodeEntity(question.question)}</p>
-            <div data-testid="answer-options">
+          <div
+            className="container mx-auto is-flex-col
+            is-align-items-center is-justify-content-center"
+          >
+            <section
+              className="box mx-auto p-3
+              has-background-light has-text-black
+              is-flex-col has-text-centered"
+            >
+              <p data-testid="question-category">{question.category}</p>
+              <p
+                className="has-text-weight-semibold"
+                data-testid="question-text"
+              >
+                {this.decodeEntity(question.question)}
+              </p>
+            </section>
+            <div
+              className="mx-auto my-2 is-flex-col has-text-centered"
+              data-testid="answer-options"
+            >
               {answers.map((answer, index) => (
                 <button
                   type="button"
                   key={ answer }
-                  className={
-                    givenAnswer
-                      ? this.changeColor(answer === correctAnswer)
-                      : undefined
-                  }
+                  className={ `button is-flex is-rounded is-normal is-hovered
+                  is-align-items-center is-link mx-auto my-2 width-5
+                  ${
+                givenAnswer
+                  ? this.changeColor(answer === correctAnswer)
+                  : undefined}` }
                   data-testid={
                     answer === correctAnswer
                       ? 'correct-answer'
@@ -163,15 +190,17 @@ class Game extends Component {
                   {this.decodeEntity(answer)}
                 </button>
               ))}
-              {givenAnswer && (
+              {givenAnswer || timeIsExpired ? (
                 <button
+                  className="button is-primary"
                   type="button"
                   data-testid="btn-next"
                   onClick={ this.nextQuestion }
                 >
                   Próxima
                 </button>
-              )}
+              )
+                : undefined}
             </div>
           </div>
         )}

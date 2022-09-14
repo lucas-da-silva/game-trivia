@@ -18,11 +18,13 @@ class ConfigurationButton extends Component {
     }
     return (
       <button
+        className="is-ligth is-size-4 has-text-black
+        has-text-weight-semibold p-1 is-rounded"
         data-testid="btn-settings"
         type="submit"
         onClick={ this.redirectToSettings }
       >
-        Configurações
+        ⚙
       </button>
     );
   }
