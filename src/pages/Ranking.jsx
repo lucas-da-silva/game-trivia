@@ -1,3 +1,5 @@
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import '../styles/Ranking.css';
@@ -41,7 +43,7 @@ class Ranking extends Component {
                     <p data-testid={ `player-name-${index}` }>{name}</p>
                   </div>
                   <div className="star-score-container">
-                    <i className="fa-solid fa-star" />
+                    <FontAwesomeIcon icon={ faStar } />
                     <div>
                       <p
                         className="score-ranking"

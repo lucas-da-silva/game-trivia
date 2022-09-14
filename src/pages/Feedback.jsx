@@ -1,13 +1,14 @@
 import { number } from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Header from '../components/Header';
+import '../styles/Feedback.css';
+
+const MINIMAL_ASSERTIONS = 3;
 
 class Feedback extends Component {
   showMessageFeedback = () => {
-    const TRES = 3;
     const { assertions } = this.props;
-    if (assertions >= TRES) return 'MANDOU BEM!';
+    if (assertions >= MINIMAL_ASSERTIONS) return 'MANDOU BEM!';
     return 'PODIA SER MELHOR...';
   };
 
@@ -22,12 +23,19 @@ class Feedback extends Component {
   };
 
   render() {
-    const { score, assertions } = this.props;
+    const { score, assertions, gravatarImg } = this.props;
     return (
-      <div>
-        <Header />
-        <main>
-          <h3 data-testid="feedback-text">{this.showMessageFeedback()}</h3>
+      <section className="feedback-container">
+        <main className="feedback-content-container">
+          <img className="feedback-avatar" src={ gravatarImg } alt="Avatar" />
+          <h3
+            className={ `feedback-text 
+              ${assertions >= MINIMAL_ASSERTIONS ? 'good' : 'bad'}` }
+            data-testid="feedback-text"
+          >
+            {this.showMessageFeedback()}
+
+          </h3>
           <p
             data-testid="feedback-total-question"
           >
@@ -44,21 +52,25 @@ class Feedback extends Component {
             }
           </p>
         </main>
-        <button
-          type="button"
-          data-testid="btn-play-again"
-          onClick={ this.buttonPlayAgain }
-        >
-          JOGAR NOVAMENTE
-        </button>
-        <button
-          type="button"
-          data-testid="btn-ranking"
-          onClick={ this.buttonPlayRanking }
-        >
-          VER RANKING
-        </button>
-      </div>
+        <div>
+          <button
+            type="button"
+            className="button is-info feedback-button"
+            data-testid="btn-ranking"
+            onClick={ this.buttonPlayRanking }
+          >
+            VER RANKING
+          </button>
+          <button
+            type="button"
+            data-testid="btn-play-again"
+            className="button is-success feedback-button"
+            onClick={ this.buttonPlayAgain }
+          >
+            JOGAR NOVAMENTE
+          </button>
+        </div>
+      </section>
     );
   }
 }
