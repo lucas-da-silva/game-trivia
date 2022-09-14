@@ -25,7 +25,6 @@ const getUrl = (category, difficult, type, token) => {
 
 const apiQuestions = async (category, difficult, type) => {
   const url = getUrl(category, difficult, type, localStorage.getItem('token'));
-  console.log(url);
   const response = await fetch(url);
   const data = await response.json();
   return data.results;

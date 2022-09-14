@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { resetScore, userAction } from '../redux/actions';
 import apiToken from '../services/apiToken';
+import '../styles/Login.css';
 
 class Login extends Component {
   state = {
@@ -43,32 +44,34 @@ class Login extends Component {
     return (
       <section>
         <form className="login-container" onSubmit={ this.submitForm }>
-          <input
-            type="text"
-            name="email"
-            data-testid="input-gravatar-email"
-            onChange={ this.handleChange }
-            value={ email }
-            className="input"
-            placeholder="Qual é o seu e-mail do gravatar?"
-          />
-          <input
-            type="text"
-            name="name"
-            onChange={ this.handleChange }
-            value={ name }
-            data-testid="input-player-name"
-            className="input"
-            placeholder="Qual é o seu nome?"
-          />
-          <button
-            type="submit"
-            data-testid="btn-play"
-            className="button"
-            disabled={ isDisabled }
-          >
-            Jogar
-          </button>
+          <div>
+            <input
+              type="text"
+              name="email"
+              data-testid="input-gravatar-email"
+              onChange={ this.handleChange }
+              value={ email }
+              className="input input-email"
+              placeholder="Qual é o seu e-mail do gravatar?"
+            />
+            <input
+              type="text"
+              name="name"
+              onChange={ this.handleChange }
+              value={ name }
+              data-testid="input-player-name"
+              className="input input-name"
+              placeholder="Qual é o seu nome?"
+            />
+            <button
+              type="submit"
+              data-testid="btn-play"
+              className="button is-info button-play"
+              disabled={ isDisabled }
+            >
+              Jogar
+            </button>
+          </div>
         </form>
       </section>
     );

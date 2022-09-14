@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import '../styles/Ranking.css';
 
 class Ranking extends Component {
   state = {
@@ -24,24 +25,46 @@ class Ranking extends Component {
     }
 
     return (
-      <section>
-        <h1 data-testid="ranking-title">Ranking</h1>
-        {
-          rankingSort.map(({ name, score, picture }, index) => (
-            <div key={ index }>
-              <img src={ picture } alt="Avatar" />
-              <p data-testid={ `player-name-${index}` }>{name}</p>
-              <p data-testid={ `player-score-${index}` }>{score}</p>
-            </div>
-          ))
-        }
-        <button
-          onClick={ this.handleClick }
-          type="button"
-          data-testid="btn-go-home"
-        >
-          JOGAR NOVAMENTE
-        </button>
+      <section className="ranking-container">
+        <div className="div-ranking-container">
+          <h1 className="ranking-title" data-testid="ranking-title">Ranking</h1>
+          <div>
+            {
+              rankingSort.map(({ name, score, gravatarImg }, index) => (
+                <div className="player-ranking-container" key={ index }>
+                  <div>
+                    <img
+                      className="ranking-avatar"
+                      src={ gravatarImg }
+                      alt="Avatar"
+                    />
+                    <p data-testid={ `player-name-${index}` }>{name}</p>
+                  </div>
+                  <div className="star-score-container">
+                    <i className="fa-solid fa-star" />
+                    <div>
+                      <p
+                        className="score-ranking"
+                        data-testid={ `player-score-${index}` }
+                      >
+                        {score}
+                      </p>
+                      <p className="ponts-ranking">pontos</p>
+                    </div>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+          <button
+            onClick={ this.handleClick }
+            type="button"
+            className="button is-success button-play-again"
+            data-testid="btn-go-home"
+          >
+            JOGAR NOVAMENTE
+          </button>
+        </div>
       </section>
     );
   }

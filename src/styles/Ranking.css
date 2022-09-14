@@ -1,0 +1,95 @@
+.ranking-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  width: 100vw;
+}
+
+.div-ranking-container {
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 1px 4px 13px 2px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  height: 488px;
+  justify-content: space-around;
+  width: 489px;
+}
+
+.ranking-title {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  line-height: 150%;
+  margin-top: 30px;
+  text-transform: uppercase;
+}
+
+.player-ranking-container {
+  align-items: center;
+  background-color: #ebebeb;
+  border-radius: 100px;
+  display: flex;
+  height: 55px;
+  justify-content: space-between;
+  margin-bottom: 13px;
+  width: 386px;
+}
+
+.player-ranking-container div {
+  align-items: center;
+  display: flex;
+}
+
+.ranking-avatar {
+  border-radius: 18px;
+  height: 37px;
+  margin: 0 12px 0 10px;
+  width: 37px;
+}
+
+.star-score-container p {
+  color: black;
+  letter-spacing: 0.12em;
+  line-height: 150%;
+}
+
+.player-ranking-container div p {
+  color: black;
+  font-weight: 400;
+  line-height: 150%;
+}
+
+.star-score-container {
+  background-color: white;
+  border-radius: 100px;
+  box-shadow: 0 4px 22px rgba(0, 0, 0, 0.25);
+  display: flex;
+  height: 55px;
+  width: 184px;
+}
+
+.fa-star {
+  color: #f9ba18;
+  font-size: 28.5px;
+  margin: 0 13px 0 12px;
+}
+
+.score-ranking {
+  font-weight: 700;
+  text-align: center;
+  width: 40px;
+}
+
+.ponts-ranking {
+  text-align: center;
+}
+
+.button-play-again {
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  height: 45px;
+  margin-bottom: 30px;
+  width: 386px;
+}

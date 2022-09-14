@@ -81,14 +81,14 @@ class Game extends Component {
   };
 
   nextQuestion = () => {
-    const { dispatch, name, gravatarEmail, score } = this.props;
+    const { dispatch, name, gravatarImg, score } = this.props;
     dispatch(resetTime(true));
     this.setState(({ indexQuestion, questions }) => {
       if (indexQuestion === LENGTH_QUESTIONS) {
         const userScore = {
           name,
           score,
-          gravatarEmail,
+          gravatarImg,
         };
         const rankings = JSON.parse(localStorage.getItem('ranking'));
         if (rankings) {
@@ -186,7 +186,7 @@ Game.propTypes = {
   }).isRequired,
   dispatch: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
-  gravatarEmail: PropTypes.string.isRequired,
+  gravatarImg: PropTypes.string.isRequired,
   score: PropTypes.number.isRequired,
   category: PropTypes.string.isRequired,
   difficult: PropTypes.string.isRequired,

@@ -1,23 +1,12 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import apiGravatar from '../services/apiGravatar';
+// import apiGravatar from '../services/apiGravatar';
 import ConfigurationButton from './ConfigurationButton';
 
 class Header extends Component {
-  state = {
-    img: '',
-  };
-
-  componentDidMount() {
-    const { email } = this.props;
-    const img = apiGravatar(email);
-    this.setState({ img });
-  }
-
   render() {
-    const { img } = this.state;
-    const { name, score } = this.props;
+    const { name, score, img } = this.props;
     return (
       <div>
         <img data-testid="header-profile-picture" src={ img } alt="Avatar" />
@@ -31,13 +20,13 @@ class Header extends Component {
 
 const mapStateToProps = (state) => ({
   name: state.player.name,
-  email: state.player.gravatarEmail,
+  img: state.player.gravatarImg,
   score: state.player.score,
 });
 
 Header.propTypes = {
   name: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
+  img: PropTypes.string.isRequired,
   score: PropTypes.number.isRequired,
 };
 

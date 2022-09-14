@@ -1,10 +1,11 @@
+import apiGravatar from '../../services/apiGravatar';
 import { LOGIN, RESET_SCORE, SCORE } from '../actions';
 
 const INITIAL_STATE = {
   name: '',
   assertions: 0,
   score: 0,
-  gravatarEmail: '',
+  gravatarImg: '',
 };
 
 const playerReducer = (state = INITIAL_STATE, action) => {
@@ -13,7 +14,7 @@ const playerReducer = (state = INITIAL_STATE, action) => {
     return {
       ...state,
       name: action.payload.name,
-      gravatarEmail: action.payload.email,
+      gravatarImg: apiGravatar(action.payload.email),
     };
   case SCORE:
     return {
