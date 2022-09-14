@@ -42,13 +42,14 @@ class Login extends Component {
     const { name, email, isDisabled } = this.state;
     return (
       <section>
-        <form onSubmit={ this.submitForm }>
+        <form className="login-container" onSubmit={ this.submitForm }>
           <input
             type="text"
             name="email"
             data-testid="input-gravatar-email"
             onChange={ this.handleChange }
             value={ email }
+            className="input"
             placeholder="Qual é o seu e-mail do gravatar?"
           />
           <input
@@ -57,11 +58,13 @@ class Login extends Component {
             onChange={ this.handleChange }
             value={ name }
             data-testid="input-player-name"
+            className="input"
             placeholder="Qual é o seu nome?"
           />
           <button
             type="submit"
             data-testid="btn-play"
+            className="button"
             disabled={ isDisabled }
           >
             Jogar
