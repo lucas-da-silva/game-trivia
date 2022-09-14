@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { configGame } from '../redux/actions';
 import { categorys, difficultys, types } from '../services/config-dropdowns';
+import '../styles/Settings.css';
 
 class Settings extends Component {
   state = {
@@ -25,31 +26,44 @@ class Settings extends Component {
   render() {
     const { category, difficult, type } = this.state;
     return (
-      <section>
-        <h1 data-testid="settings-title">Configurações</h1>
-        <form onSubmit={ this.handleSubmit }>
-          <select value={ category } onChange={ this.handleChange } name="category">
-            {
-              categorys.map(({ id, name }) => (
-                <option key={ id } value={ id }>{name}</option>
-              ))
-            }
-          </select>
-          <select value={ difficult } onChange={ this.handleChange } name="difficult">
-            {
-              difficultys.map(({ id, name }) => (
-                <option key={ id } value={ id }>{name}</option>
-              ))
-            }
-          </select>
-          <select value={ type } onChange={ this.handleChange } name="type">
-            {
-              types.map(({ id, name }) => (
-                <option key={ id } value={ id }>{name}</option>
-              ))
-            }
-          </select>
-          <button type="submit">Jogar</button>
+      <section className="settings-container">
+        <form className="form-settings-container" onSubmit={ this.handleSubmit }>
+          <h1 className="title-setings" data-testid="settings-title">Configurações</h1>
+          <div>
+            <div className="select config-select">
+              <select value={ category } onChange={ this.handleChange } name="category">
+                {
+                  categorys.map(({ id, name }) => (
+                    <option key={ id } value={ id }>{name}</option>
+                  ))
+                }
+              </select>
+            </div>
+            <div className="select config-select">
+              <select value={ difficult } onChange={ this.handleChange } name="difficult">
+                {
+                  difficultys.map(({ id, name }) => (
+                    <option key={ id } value={ id }>{name}</option>
+                  ))
+                }
+              </select>
+            </div>
+            <div className="select config-select">
+              <select value={ type } onChange={ this.handleChange } name="type">
+                {
+                  types.map(({ id, name }) => (
+                    <option key={ id } value={ id }>{name}</option>
+                  ))
+                }
+              </select>
+            </div>
+            <button
+              className="button is-primary button-setting-play"
+              type="submit"
+            >
+              Jogar
+            </button>
+          </div>
         </form>
       </section>
     );
