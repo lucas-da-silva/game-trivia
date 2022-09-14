@@ -48,7 +48,10 @@ class Clock extends Component {
       this.getReset();
     }
     return (
-      <div className="is-flex-col">
+      <div
+        className="is-flex is-flex-col box my-2
+        has-background-info has-text-white is-justify-content-center"
+      >
         <span data-testid="timer-clock">{`Tempo restante: ${currentCount}`}</span>
       </div>
     );

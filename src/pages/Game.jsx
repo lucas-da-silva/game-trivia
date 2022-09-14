@@ -139,7 +139,7 @@ class Game extends Component {
     } = this.state;
     const question = questions[indexQuestion];
     return (
-      <section>
+      <section className="container is-max-widescreen">
         <Header />
         <Clock
           updateClock={ this.updateClock }
@@ -147,11 +147,11 @@ class Game extends Component {
         />
         {question && (
           <div
-            className="container mx-auto is-flex-col
+            className="box mx-auto is-flex-col
             is-align-items-center is-justify-content-center"
           >
             <section
-              className="box mx-auto p-3
+              className="box mx-auto p-3 my-2
               has-background-light has-text-black
               is-flex-col has-text-centered"
             >
