@@ -10,11 +10,31 @@ class Routes extends Component {
   render() {
     return (
       <Switch>
-        <Route exact path="/game" render={ (props) => <Game { ...props } /> } />
-        <Route exact path="/settings" render={ (props) => <Settings { ...props } /> } />
-        <Route exact path="/ranking" component={ Ranking } />
-        <Route exact path="/" render={ (props) => <Login { ...props } /> } />
-        <Route exact path="/feedback" component={ Feedback } />
+        <Route
+          exact
+          path="/project-trivia/game"
+          render={ (props) => <Game { ...props } /> }
+        />
+        <Route
+          exact
+          path="/project-trivia/settings"
+          render={ (props) => <Settings { ...props } /> }
+        />
+        <Route
+          exact
+          path="/project-trivia/ranking"
+          component={ Ranking }
+        />
+        <Route
+          exact
+          path="/project-trivia/"
+          render={ (props) => <Login { ...props } /> }
+        />
+        <Route
+          exact
+          path="/project-trivia/feedback"
+          component={ Feedback }
+        />
       </Switch>
     );
   }
