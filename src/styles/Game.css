@@ -81,7 +81,7 @@
   letter-spacing: 0.1em;
   line-height: 150%;
   margin: 6px 0;
-  width: 450px;
+  width: 500px;
 }
 
 .text-score {
@@ -97,7 +97,7 @@
   letter-spacing: 0.1em;
   line-height: 150%;
   text-transform: uppercase;
-  width: 450px;
+  width: 500px;
 }
 
 .correctAnswer {

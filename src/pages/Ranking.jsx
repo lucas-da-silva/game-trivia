@@ -43,7 +43,7 @@ class Ranking extends Component {
                     <p data-testid={ `player-name-${index}` }>{name}</p>
                   </div>
                   <div className="star-score-container">
-                    <FontAwesomeIcon icon={ faStar } />
+                    <FontAwesomeIcon className="ranking-icon-star" icon={ faStar } />
                     <div>
                       <p
                         className="score-ranking"
