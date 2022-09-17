@@ -27,13 +27,13 @@ class Routes extends Component {
         />
         <Route
           exact
-          path="/project-trivia/"
-          render={ (props) => <Login { ...props } /> }
+          path="/project-trivia/feedback"
+          component={ Feedback }
         />
         <Route
           exact
-          path="/project-trivia/feedback"
-          component={ Feedback }
+          path="/project-trivia/"
+          render={ (props) => <Login { ...props } /> }
         />
       </Switch>
     );
