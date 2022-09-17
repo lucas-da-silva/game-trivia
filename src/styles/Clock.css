@@ -1,0 +1,20 @@
+.clock-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.clock-icon {
+  color: #ea5d5d;
+  height: 18px;
+  margin-right: 7px;
+  width: 18px;
+}
+
+.clock-timer {
+  color: #ea5d5d;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 150%;
+}

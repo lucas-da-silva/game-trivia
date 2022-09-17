@@ -45,9 +45,7 @@ class Login extends Component {
       <section
         className="login-page-container"
       >
-        <figure className="image is-128x128">
-          <img src="https://www.svgrepo.com/show/414246/ask.svg" alt="logo" />
-        </figure>
+        <img className="login-logo" src="./logotrivia.png" alt="logo" />
         <form className="login-container" onSubmit={ this.submitForm }>
           <div>
             <input

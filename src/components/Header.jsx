@@ -11,7 +11,7 @@ class Header extends Component {
     const { name, score, img } = this.props;
     return (
       <section className="header-container">
-        <img src="https://www.svgrepo.com/show/414246/ask.svg" alt="logo" />
+        <img className="header-logo" src="./logotrivia.png" alt="logo" />
         <div className="header-content-container">
           <div className="header-profile-container">
             <img
@@ -25,7 +25,7 @@ class Header extends Component {
           <div className="header-score-container">
             <FontAwesomeIcon className="header-icon-star" icon={ faStar } />
             <p>Pontos:</p>
-            <span data-testid="header-score">
+            <span className="header-score" data-testid="header-score">
               <b>{score}</b>
             </span>
           </div>

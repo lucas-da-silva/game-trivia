@@ -1,8 +1,18 @@
+:root {
+
+  --secundary: #19274e;
+}
+
 .header-container {
   align-items: center;
+  background-color: var(--secundary);
   display: flex;
-  height: 110px;
+  height: 12vh;
   justify-content: space-around;
+}
+
+.header-logo {
+  width: 80px;
 }
 
 .header-content-container {
@@ -11,6 +21,7 @@
   justify-content: space-around;
   width: 500px;
 }
+
 
 .header-profile-container {
   align-items: center;
@@ -25,6 +36,7 @@
 }
 
 .header-profile-container p {
+  color: white;
   font-weight: 400;
   line-height: 150%;
 }
@@ -35,11 +47,15 @@
 }
 
 .header-score-container p {
-  color: black;
+  color: white;
   font-weight: 400;
   letter-spacing: 0.12em;
   line-height: 150%;
   margin-right: 4px;
+}
+
+.header-score {
+  color: white;
 }
 
 .header-icon-star {

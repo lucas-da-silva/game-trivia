@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Clock from '../components/Clock';
 import Header from '../components/Header';
-import { addToScoreAction, resetTime } from '../redux/actions';
+import { addToScoreAction } from '../redux/actions';
 import apiQuestions from '../services/apiQuestions';
 import '../styles/Game.css';
 
@@ -16,9 +16,11 @@ class Game extends Component {
     indexQuestion: 0,
     answers: [],
     correctAnswer: '',
+    resetTime: false,
     givenAnswer: false,
     timeIsExpired: false,
     currentCount: 30,
+    score: 0,
   };
 
   componentDidMount() {
@@ -59,12 +61,15 @@ class Game extends Component {
       switch (difficulty) {
       case 'hard':
         dispatch(addToScoreAction(INITIAL_POINT + currentCount * hard));
+        this.setState({ score: INITIAL_POINT + currentCount * hard });
         break;
       case 'medium':
         dispatch(addToScoreAction(INITIAL_POINT + currentCount * medium));
+        this.setState({ score: INITIAL_POINT + currentCount * medium });
         break;
       default:
         dispatch(addToScoreAction(INITIAL_POINT + currentCount * easy));
+        this.setState({ score: INITIAL_POINT + currentCount * easy });
       }
     }
     this.setState({ timeIsExpired: true, givenAnswer: true });
@@ -85,9 +90,9 @@ class Game extends Component {
   };
 
   nextQuestion = () => {
-    const { dispatch, name, gravatarImg, score } = this.props;
-    dispatch(resetTime(true));
-    this.setState(({ indexQuestion, questions }) => {
+    const { name, gravatarImg, score } = this.props;
+    this.setState({ resetTime: true }, () => {
+      const { indexQuestion, questions } = this.state;
       if (indexQuestion === LENGTH_QUESTIONS) {
         const userScore = {
           name,
@@ -111,14 +116,15 @@ class Game extends Component {
         questions[currentIndex].correct_answer,
         ...questions[currentIndex].incorrect_answers,
       ];
-      return {
+      this.setState({
         givenAnswer: false,
-        resetTime: true,
+        resetTime: false,
         indexQuestion: currentIndex,
         answers: this.shuffleArray(answers),
         correctAnswer: questions[currentIndex].correct_answer,
         timeIsExpired: false,
-      };
+        score: 0,
+      });
     });
   };
 
@@ -136,73 +142,81 @@ class Game extends Component {
       indexQuestion,
       givenAnswer,
       timeIsExpired,
+      resetTime,
+      score,
     } = this.state;
     const question = questions[indexQuestion];
     return (
-      <section>
+      <section className="game-container">
         <Header />
-        <Clock
-          updateClock={ this.updateClock }
-          handleExpired={ this.handleExpired }
-        />
         {question && (
-          <div
-            className="box mx-auto is-flex-col
-            is-align-items-center is-justify-content-center"
-          >
-            <section
-              className="box mx-auto p-3 my-2
-              has-background-light has-text-black
-              is-flex-col has-text-centered"
-            >
-              <p data-testid="question-category">{question.category}</p>
-              <p
-                className="has-text-weight-semibold"
-                data-testid="question-text"
-              >
-                {this.decodeEntity(question.question)}
-              </p>
-            </section>
-            <div
-              className="mx-auto my-2 is-flex-col has-text-centered"
-              data-testid="answer-options"
-            >
-              {answers.map((answer, index) => (
-                <button
-                  type="button"
-                  key={ answer }
-                  className={ `button is-flex is-rounded is-normal is-hovered
-                  is-align-items-center is-link mx-auto my-2 width-5
-                  ${
-                givenAnswer
-                  ? this.changeColor(answer === correctAnswer)
-                  : undefined}` }
-                  data-testid={
-                    answer === correctAnswer
-                      ? 'correct-answer'
-                      : `wrong-answer-${index}`
-                  }
-                  onClick={
-                    () => this.handleClick(answer, correctAnswer, question.difficulty)
-                  }
-                  disabled={ timeIsExpired }
+          <section className="game-content-container">
+            <section className="game-question-container">
+              <div className="question-category">
+                <p
+                  data-testid="question-category"
+                  className={ question }
                 >
-                  {this.decodeEntity(answer)}
-                </button>
-              ))}
-              {givenAnswer || timeIsExpired ? (
+                  {question.category}
+                </p>
+              </div>
+              <div className="question-text">
+                <p
+                  data-testid="question-text"
+                >
+                  {this.decodeEntity(question.question)}
+                </p>
+              </div>
+              <Clock
+                updateClock={ this.updateClock }
+                resetTime={ resetTime }
+                isToStopClock={ timeIsExpired }
+                handleExpired={ this.handleExpired }
+              />
+            </section>
+            <div className="game-answer-container" data-testid="answer-options">
+              <div className="answers-container">
+                {answers.map((answer, index) => (
+                  <button
+                    type="button"
+                    key={ answer }
+                    className={ `button is-rounded button-answer
+                  ${
+                  givenAnswer
+                    ? this.changeColor(answer === correctAnswer)
+                    : undefined}` }
+                    data-testid={
+                      answer === correctAnswer
+                        ? 'correct-answer'
+                        : `wrong-answer-${index}`
+                    }
+                    onClick={
+                      () => this.handleClick(answer, correctAnswer, question.difficulty)
+                    }
+                    disabled={ timeIsExpired }
+                  >
+                    {this.decodeEntity(answer)}
+                  </button>
+                ))}
+              </div>
+              {
+                score !== 0
+                && <p className="text-score">{`Você ganhou ${score} pontos`}</p>
+              }
+              {(givenAnswer || timeIsExpired) && (
                 <button
-                  className="button is-primary"
+                  className="button game-button-next is-primary"
                   type="button"
                   data-testid="btn-next"
                   onClick={ this.nextQuestion }
                 >
-                  Próxima
+                  {
+                    indexQuestion === LENGTH_QUESTIONS ? 'Finalizar o jogo' : 'Próxima'
+                  }
                 </button>
-              )
-                : undefined}
+              )}
             </div>
-          </div>
+          </section>
         )}
       </section>
     );
@@ -229,8 +243,4 @@ const mapStateToProps = ({ player, game }) => ({
   type: game.type,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  dispatch,
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Game);
+export default connect(mapStateToProps)(Game);
