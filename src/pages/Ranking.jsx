@@ -23,7 +23,7 @@ class Ranking extends Component {
     const { isRedirect, ranking } = this.state;
     const rankingSort = ranking.sort((a, b) => b.score - a.score);
     if (isRedirect) {
-      return <Redirect to="/" />;
+      return <Redirect to="/project-trivia/" />;
     }
 
     return (

@@ -20,7 +20,7 @@ class Settings extends Component {
     event.preventDefault();
     const { dispatch, history } = this.props;
     dispatch(configGame(this.state));
-    history.push('/game');
+    history.push('/project-trivia/game');
   };
 
   render() {
