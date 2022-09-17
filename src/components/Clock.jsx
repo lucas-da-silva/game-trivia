@@ -70,10 +70,10 @@ class Clock extends Component {
 }
 
 Clock.propTypes = {
-  handleExpired: PropTypes.func.isRequired,
-  updateClock: PropTypes.func.isRequired,
-  isToStopClock: PropTypes.bool.isRequired,
-  resetTime: PropTypes.bool.isRequired,
-};
+  handleExpired: PropTypes.func,
+  updateClock: PropTypes.func,
+  isToStopClock: PropTypes.bool,
+  resetTime: PropTypes.bool,
+}.isRequired;
 
 export default Clock;

@@ -225,16 +225,16 @@ class Game extends Component {
 
 Game.propTypes = {
   history: PropTypes.shape({
-    push: PropTypes.func.isRequired,
-  }).isRequired,
-  dispatch: PropTypes.func.isRequired,
-  name: PropTypes.string.isRequired,
-  gravatarImg: PropTypes.string.isRequired,
-  score: PropTypes.number.isRequired,
-  category: PropTypes.string.isRequired,
-  difficult: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-};
+    push: PropTypes.func,
+  }),
+  dispatch: PropTypes.func,
+  name: PropTypes.string,
+  gravatarImg: PropTypes.string,
+  score: PropTypes.number,
+  category: PropTypes.string,
+  difficult: PropTypes.string,
+  type: PropTypes.string,
+}.isRequired;
 
 const mapStateToProps = ({ player, game }) => ({
   ...player,
