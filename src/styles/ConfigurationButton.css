@@ -1,0 +1,20 @@
+.btn-setting {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  height: 31px;
+  outline: inherit;
+  padding: 0;
+}
+
+.icon-gear {
+  color: #b5b5b5;
+  height: 28px;
+  width: 28px;
+}
+
+.fa-spin-hover:hover {
+  animation: fa-spin 3s infinite linear;
+}

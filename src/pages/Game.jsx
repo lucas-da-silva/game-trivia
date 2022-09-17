@@ -139,7 +139,7 @@ class Game extends Component {
     } = this.state;
     const question = questions[indexQuestion];
     return (
-      <section className="container is-max-widescreen">
+      <section>
         <Header />
         <Clock
           updateClock={ this.updateClock }

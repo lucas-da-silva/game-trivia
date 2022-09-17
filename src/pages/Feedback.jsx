@@ -24,13 +24,20 @@ class Feedback extends Component {
 
   render() {
     const { score, assertions, gravatarImg } = this.props;
+    let color = 'good';
+    if (assertions < MINIMAL_ASSERTIONS) {
+      color = 'bad';
+    }
     return (
       <section className="feedback-container">
         <main className="feedback-content-container">
-          <img className="feedback-avatar" src={ gravatarImg } alt="Avatar" />
+          <img
+            className={ `feedback-avatar ${`${color}-img`}` }
+            src={ gravatarImg }
+            alt="Avatar"
+          />
           <h3
-            className={ `feedback-text 
-              ${assertions >= MINIMAL_ASSERTIONS ? 'good' : 'bad'}` }
+            className={ `feedback-text ${color}` }
             data-testid="feedback-text"
           >
             {this.showMessageFeedback()}
@@ -40,15 +47,16 @@ class Feedback extends Component {
             data-testid="feedback-total-question"
           >
             {
-              score === 0
-                ? 'Você não acertou nenhum questão!' : `Você acertou ${score} questões!`
+              assertions === 0 ? 'Você não acertou nenhum questão!'
+                : `Você acertou 
+                ${assertions} ${assertions === 1 ? 'questão' : 'questões'}!`
             }
           </p>
           <p
             data-testid="feedback-total-score"
           >
             {
-              `Um total de ${assertions} ${assertions === 1 ? ' ponto' : ' pontos'}`
+              `Um total de ${score} ${score === 1 ? ' ponto' : ' pontos'}`
             }
           </p>
         </main>

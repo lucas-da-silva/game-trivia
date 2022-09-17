@@ -1,0 +1,47 @@
+.header-container {
+  align-items: center;
+  display: flex;
+  height: 110px;
+  justify-content: space-around;
+}
+
+.header-content-container {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  width: 500px;
+}
+
+.header-profile-container {
+  align-items: center;
+  display: flex;
+}
+
+.header-profile-img {
+  border-radius: 18px;
+  height: 37px;
+  margin-right: 9px;
+  width: 37px;
+}
+
+.header-profile-container p {
+  font-weight: 400;
+  line-height: 150%;
+}
+
+.header-score-container {
+  align-items: center;
+  display: flex;
+}
+
+.header-score-container p {
+  color: black;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  line-height: 150%;
+  margin-right: 4px;
+}
+
+.header-icon-star {
+  margin-right: 10px;
+}

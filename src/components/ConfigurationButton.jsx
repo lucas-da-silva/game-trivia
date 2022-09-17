@@ -1,5 +1,8 @@
+import { faGear } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import '../styles/ConfigurationButton.css';
 
 class ConfigurationButton extends Component {
   state = {
@@ -18,13 +21,12 @@ class ConfigurationButton extends Component {
     }
     return (
       <button
-        className="is-ligth is-size-4 has-text-black
-        has-text-weight-semibold p-1 is-rounded"
         data-testid="btn-settings"
         type="submit"
+        className="btn-setting fa-spin-hover"
         onClick={ this.redirectToSettings }
       >
-        ⚙
+        <FontAwesomeIcon className="icon-gear" icon={ faGear } />
       </button>
     );
   }

@@ -1,43 +1,37 @@
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import apiGravatar from '../services/apiGravatar';
+import '../styles/Header.css';
 import ConfigurationButton from './ConfigurationButton';
 
 class Header extends Component {
   render() {
     const { name, score, img } = this.props;
     return (
-      <header
-        className="control has-background-grey-lighter has-text-black box p-2
-      is-primary is-max-desktop is-flex
-      is-justify-content-space-around is-align-items-center"
-      >
-        <section className="is-flex">
-          <figure className="image is-122x122">
+      <section className="header-container">
+        <img src="https://www.svgrepo.com/show/414246/ask.svg" alt="logo" />
+        <div className="header-content-container">
+          <div className="header-profile-container">
             <img
-              className="is-rounded"
               data-testid="header-profile-picture"
+              className="header-profile-img"
               src={ img }
               alt="Avatar"
             />
-          </figure>
-          <figure className="image is-125x125">
-            <img src="https://www.svgrepo.com/show/414246/ask.svg" alt="logo" />
-          </figure>
-        </section>
-        <section
-          className="is-flex is-justify-content-space-between is-align-items-center"
-        >
-          <p className="mx-2" data-testid="header-player-name">
-            {`Player: ${name}`}
-          </p>
-          <span className="mx-2" data-testid="header-score">
-            {`Pontos: ${score}`}
-          </span>
+            <p data-testid="header-player-name">{name}</p>
+          </div>
+          <div className="header-score-container">
+            <FontAwesomeIcon className="header-icon-star" icon={ faStar } />
+            <p>Pontos:</p>
+            <span data-testid="header-score">
+              <b>{score}</b>
+            </span>
+          </div>
           <ConfigurationButton />
-        </section>
-      </header>
+        </div>
+      </section>
     );
   }
 }
