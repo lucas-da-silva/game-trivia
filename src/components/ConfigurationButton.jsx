@@ -17,7 +17,7 @@ class ConfigurationButton extends Component {
   render() {
     const { isRedirect } = this.state;
     if (isRedirect) {
-      return (<Redirect to="/settings" />);
+      return (<Redirect to="/project-trivia/settings" />);
     }
     return (
       <button

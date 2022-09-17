@@ -2,7 +2,7 @@
 
 ## Comentários
 
-Projeto desenvolvido em grupo, com o objetivo de criar um jogo de perguntas e respostas, utilizando React e Redux. Foi uma experiência muito boa, onde pude ajudar e ser ajudado pelos meus colegas de equipe. Ferramentas como Trello ajudam e muito na organização do trabalho em equipe, evitando conflitos e perda de tempo. Erros/features que levam um tempo considerável para serem resolvidos quando stou fazendo o projeto sozinho, são resolvidos em menos tempo e com assertividade no código. 
+Projeto desenvolvido em grupo, com o objetivo de criar um jogo de perguntas e respostas, utilizando React e Redux. Foi uma experiência muito boa, onde pude ajudar e ser ajudado pelos meus colegas de equipe. Ferramentas como Trello ajudam e muito na organização do trabalho em equipe, evitando conflitos e perda de tempo. Erros/features que levam um tempo considerável para serem resolvidos/desenvolvidos quando o projeto é desenvolvido sozinho, são resolvidos em menos tempo e com assertividade no código. 
 
 ---
 
