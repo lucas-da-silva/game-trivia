@@ -14,12 +14,12 @@ class Feedback extends Component {
 
   buttonPlayAgain = () => {
     const { history } = this.props;
-    history.push('/project-trivia/');
+    history.push('/game-trivia/');
   };
 
   buttonPlayRanking = () => {
     const { history } = this.props;
-    history.push('/project-trivia/ranking');
+    history.push('/game-trivia/ranking');
   };
 
   render() {
