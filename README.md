@@ -30,7 +30,7 @@ Projeto desenvolvido em grupo, com o objetivo de criar um jogo de perguntas e re
 1. No terminal, em um diretório de sua escolha, clonar o repositório:
 
 ```
-git clone git@github.com:lucas-da-silva/game-trivia.git
+git clone git@github.com:lucas-da-silva/trivia-game.git
 ```
 
 2. Dentro do repositório do projeto, instalar as dependências:

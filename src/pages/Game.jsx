@@ -33,7 +33,7 @@ class Game extends Component {
     if (questions === undefined || !questions.length) {
       localStorage.removeItem('token');
       const { history } = this.props;
-      history.push('/game-trivia/');
+      history.push('/trivia-game/');
     } else {
       const answers = [
         questions[0].correct_answer,
@@ -109,7 +109,7 @@ class Game extends Component {
           localStorage.setItem('ranking', JSON.stringify([userScore]));
         }
         const { history } = this.props;
-        return history.push('/game-trivia/feedback');
+        return history.push('/trivia-game/feedback');
       }
       const currentIndex = indexQuestion + 1;
       const answers = [

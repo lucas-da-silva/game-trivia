@@ -36,7 +36,7 @@ class Login extends Component {
     const { history, dispatch } = this.props;
     const { name, email } = this.state;
     dispatch(userAction(name, email));
-    history.push('/game-trivia/game');
+    history.push('/trivia-game/game');
   };
 
   render() {
