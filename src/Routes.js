@@ -12,27 +12,27 @@ class Routes extends Component {
       <Switch>
         <Route
           exact
-          path="/project-trivia/game"
+          path="/game-trivia/game"
           render={ (props) => <Game { ...props } /> }
         />
         <Route
           exact
-          path="/project-trivia/settings"
+          path="/game-trivia/settings"
           render={ (props) => <Settings { ...props } /> }
         />
         <Route
           exact
-          path="/project-trivia/ranking"
+          path="/game-trivia/ranking"
           component={ Ranking }
         />
         <Route
           exact
-          path="/project-trivia/feedback"
+          path="/game-trivia/feedback"
           component={ Feedback }
         />
         <Route
           exact
-          path="/project-trivia/"
+          path="/game-trivia/"
           render={ (props) => <Login { ...props } /> }
         />
       </Switch>
